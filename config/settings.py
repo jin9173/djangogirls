@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 이 패키지는 application 취급
+    'blog',
 ]
 
 MIDDLEWARE = [
