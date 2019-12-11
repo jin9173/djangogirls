@@ -14,6 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print('settings.py의 BASE_DIR: ', BASE_DIR)
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+print('settings.py의 TEMPLATES_DIR: ', TEMPLATES_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -53,10 +56,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+# Templates관련 설정
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 기본설정 외에 Template을 찾을 경로 목록
+        'DIRS': [
+            # djangogirls/templates/ 폴더를 추가
+            TEMPLATES_DIR,
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
