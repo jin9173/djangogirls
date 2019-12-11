@@ -10,14 +10,44 @@
     <link rel="stylesheet" href="/static/bootstrap/bootstrap.css">
 </head>
 <body>
-    <h1>Post List!</h1>
-<!--    <div>{{ posts }}</div>-->
-    {% for post in posts %}
-        <div>{{ post.title }}</div>
-        <div>{{ post.author }}</div>
-        <div>{{ post.created_date }}</div>
-        <div>{{ post.published_date}}</div>
-    {% endfor %}
+    <div id="wrap">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a href="#" class="navbar-brand">DjangoGirls</a>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Post List</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid pt-2">
+            {% for post in posts %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <!--
+                        linebreaksbr: 줄바꿈을 <br>태그로 변환
+                        truncatechars: 뒤에 지정한 글자수만큼 표시 후 ...으로 줄임
+                    -->
+                    <p class="card-text">{{ post.text|linebreaksbr|truncatechars:250 }}</p>
+                    <div class="text-right">
+                        <span>{{ post.created_date }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<!--    <h1>Post List!</h1>-->
+<!--&lt;!&ndash;    <div>{{ posts }}</div>&ndash;&gt;-->
+<!--    {% for post in posts %}-->
+<!--        <div>{{ post.title }}</div>-->
+<!--        <div>{{ post.author }}</div>-->
+<!--        <div>{{ post.created_date }}</div>-->
+<!--        <div>{{ post.published_date}}</div>-->
+<!--    {% endfor %}-->
 <!--    <div>-->
 <!--        <p>published: 12.11.2019, 14:38</p>-->
 <!--        <h2><a href="">My First Post</a></h2>-->
