@@ -4,11 +4,10 @@
     {% for post in posts %}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ post.title }}</h5>
-                <!--
-                    linebreaksbr: 줄바꿈을 <br>태그로 변환
-                    truncatechars: 뒤에 지정한 글자수만큼 표시 후 ...으로 줄임
-                -->
+                <!-- 아래 텍스트에 링크추가, 클릭 시 해당하는 /post-detail/어딘가/로 이동하도록 함 -->
+                <h5 class="card-title">
+                    <a href="/post-detail/{{ post.pk }}">{{ post.title }}</a>
+                </h5>
                 <p class="card-text">{{ post.text|linebreaksbr|truncatechars:250 }}</p>
                 <div class="text-right">
                     <span>{{ post.created_date }}</span>
