@@ -1,11 +1,12 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
 from blog.models import Post
 
 
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-pk')
     context = {
         'posts': posts,
     }
@@ -51,6 +52,9 @@ def post_add(request):
             text=text,
         )
         result = f'title: {post.title}, created_date: {post.created_date}'
-        return HttpResponse(result)
+        # post_list_url = reverse('url-name-post-list')
+        # return HttpResponseRedirect(post_list_url)
+        return redßirect('url-name-post-list')
+        # return HttpResponse(result)
     else:
         return render(request, 'post_add.html')
