@@ -13,9 +13,6 @@ def post_list(request):
 
 
 def post_detail(request, pk):
-    print('post_detail request', request)
-    print('post_detail pk', pk)
-
     try:
         post = Post.objects.get(pk=pk)
     except Post.DoesNotExist:
