@@ -10,22 +10,27 @@
 </head>
 <body>
 {# 장고 주석 #}
-    <div id="wrap">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a href="#" class="navbar-brand">DjangoGirls</a>
+<div id="wrap">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">DjangoGirls</a>
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <!-- 이 링크를 클릭하면 /post-list/로 가도록 함 -->
-                        <a href="{% url 'url-name-post-list' %}" class="nav-link">Post List</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="container-fluid pt-2">
-            {% block content %}{% endblock %}
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <!-- 이 링크를 클릭하면 /post-list/로 가도록 함 -->
+                    <a href="{% url 'url-name-post-list' %}" class="nav-link">Post List</a>
+                </li>
+                <li class="nav-item">
+                    <!-- 이 링크를 클릭하면 /post-list/로 가도록 함 -->
+                    <a href="{% url 'url-name-post-add' %}" class="nav-link">Post Add</a>
+                </li>
+
+            </ul>
         </div>
+    </nav>
+    <div class="container-fluid pt-2">
+        {% block content %}{% endblock %}
     </div>
+</div>
 </body>
 </html>
