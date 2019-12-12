@@ -1,41 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/bootstrap/bootstrap.css">
-</head>
-<body>
-{# 장고 주석 #}
-    <div id="wrap">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a href="#" class="navbar-brand">DjangoGirls</a>
+{% extends 'base.html' %}
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Post Detail</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="container-fluid pt-2">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.text|linebreaksbr }}</p>
-                    <div class="text-right">
-                        <span>{{ post.author }}</span>
-                        <span>{{ post.text }}</span>
-                        <span>{{ post.created_date }}</span>
-                        <span>{{ post.published_date}}</span>
-                    </div>
-                </div>
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.text|linebreaksbr }}</p>
+            <div class="text-right">
+                <span>{{ post.author }}</span>
+                <span>{{ post.text }}</span>
+                <span>{{ post.created_date }}</span>
+                <span>{{ post.published_date }}</span>
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
