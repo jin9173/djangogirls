@@ -31,7 +31,16 @@ def post_detail(request):
     # View:     post_detail (이 함수)
     # Template: post_detail.html
     #   내용으로 <h1>Post Detail!</h1>을 갖도록 함
-    return render(request, 'post_detail.html')
+
+    # 1. 전체 Post목록(Post전체 QuerySet) 중 [0]번 index에 해당하는 Post객체 하나를 post변수에 할당
+    # 2. 'context'라는 이름의 dict를 만들며, 'post' key에 위 post변수를 value로 사용한다
+    # 3. 이 context변수를 render의 3번째 인자로 전달
+    # 4. post_detail.html에서는 전달받은 'post'변수의 title, author, text, created_date, published_date를 적절히 출력해준다
+    post = Post.objects.all()[0]
+    context = {
+        'post': post,
+    }
+    return render(request, 'post_detail.html', context)
 
 
 
