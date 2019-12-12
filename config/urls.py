@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # post-list라는 URL에 온 요청은 blog.views.post_list함수가 처리한다.
     path('posts/', post_list, name='url-name-post-list'),
-    path('post-detail/<int:pk>/', post_detail, name='url-name-post-detail'),
-    path('post-add/', post_add, name='url-name-post-add'),
+    path('posts-details/<int:pk>/', post_detail, name='url-name-post-detail'),
+    path('posts/add/', post_add, name='url-name-post-add'),
 ]

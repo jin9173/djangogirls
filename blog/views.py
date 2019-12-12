@@ -26,12 +26,31 @@ def post_detail(request, pk):
 
 
 def post_add(request):
-    # URL:      /posts/add
-    # View:     이 함수
-    # Template: post_add.html
-    #   form태그 내부에
-    #       input한개, textarea한개, button[type=submit]한개
+    # request.POST에 담긴 title, text를
+    # HTTPResponse를 사용해서 적절히 리턴
+    #   title: <입력받은 제목>, text: <입력받은 텍스트>
+    # 위와 같은 문자열을 리턴해주도록 한다
 
-    # base.html의 nav안에 /posts/add/로의 링크 하나 추가
-    #   링크 텍스트: Post Add
-    return render(request, 'post_add.html')
+    # title = request.POST['title']
+    # text = request.POST['text']
+    # print(title, text)
+
+    if request.method == 'POST':
+        author = request.user
+        title = request.POST['title']
+        text = request.POST['text']
+
+        # 위 3개의 값을 사용해서
+        # 새로운 Post를 생성
+        # 생성한 Post의 title과 created_date를 HttpResponse에 적절한 문자열로 전달
+        #   출력 예) title: 파이썬, created_date: <적당한 값>
+
+        post = Post.objects.create(
+            author=author,
+            title=title,
+            text=text,
+        )
+        result = f'title: {post.title}, created_date: {post.created_date}'
+        return HttpResponse(result)
+    else:
+        return render(request, 'post_add.html')
