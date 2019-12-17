@@ -118,9 +118,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -134,7 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # 정적 파일을 찾는 경로
-STAICFILES_DIRS = [
+STATICFILES_DIRS = [
     # djangogirls/static 폴더 path가 여기에 추가되도록 한다
     os.path.join(BASE_DIR, 'static')
 ]

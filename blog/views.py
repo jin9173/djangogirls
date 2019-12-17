@@ -54,10 +54,31 @@ def post_add(request):
         result = f'title: {post.title}, created_date: {post.created_date}'
         # post_list_url = reverse('url-name-post-list')
         # return HttpResponseRedirect(post_list_url)
-        return redßirect('url-name-post-list')
+        return redirect('url-name-post-list')
         # return HttpResponse(result)
     else:
         return render(request, 'post_add.html')
+
+
+def post_delete_confirm(request, pk):
+    # URL:      /posts/<int:pk>/delete/confirm/
+    # Template: post_delete_confirm.html
+
+    # post_list.html의 form이 여기로 이동해야 함
+    # post_list.html의 삭제버튼은 단순히 이 view로의 이동만을 정의 (a태그)
+
+    # 정말로 이 글을 삭제하시겠습니까?
+    # 글의 제목과 작성일자를 보여줌
+    # '삭제'버튼을 한번 더 누르면 삭제 후 redirect (post-list로)
+
+    # context 전달해야 함
+    # 'post'키로 pk에 해당하는 Post instance를 전달한다
+    #   (템플릿에서 'post'라는 이름의 변수를 사용중)
+    post = Post.objects.get(pk=pk)
+    context = {
+        'post': post,
+    }
+    return render(request, 'post_delete_confirm.html', context)
 
 
 def post_delete(request, pk):
@@ -66,6 +87,7 @@ def post_delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
     return redirect('url-name-post-list')
+
 
 def post_edit(request, pk):
     if request.method == 'POST':
