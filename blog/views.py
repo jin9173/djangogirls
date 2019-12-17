@@ -94,11 +94,23 @@ def post_edit(request, pk):
         # request.POST로 전달된 title, text내용을 사용해서
         #   pk에 해당하는 Post의 해당 필드를 수정하고 save()
         #   이후 해당 Post의 post-detail화면으로 이동
-        pass
+        title = request.POST['title']
+        text = request.POST['text']
+
+        post = Post.objects.get(pk=pk)
+        post.title = title
+        post.text = text
+        post.save()
+        return redirect('url-name-post-detail', pk=pk)
     else:
         # 수정할 수 있는 form이 존재하는 화면을 보여줌
         # 화면의 form에는 pk에 해당하는 Post의 title, text값이 들어있어야 함 (수정이므로)
-        pass
+        post = Post.objects.get(pk=pk)
+        context = {
+            'post': post,
+        }
+        return render(request, 'post_edit.html', context)
+
 
 def post_published(request, pk):
     # pk에 해당하는 Post의 published_date를 업데이트
@@ -106,6 +118,7 @@ def post_published(request, pk):
     # 완료후에는 post-detail로 이동
     #   결과를 볼 수 있도록, 리스트 및 디테일 화면에서 published_date도 출력하도록 한다
     pass
+
 
 def post_unpublish(request, pk):
     # pk에 해당하는 Post의 published_date에 None을 대입 후 save()
